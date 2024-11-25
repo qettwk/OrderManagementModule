@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(OrderDbContext))]
-    [Migration("20241107123442_Initial")]
+    [Migration("20241120093647_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -24,6 +24,26 @@ namespace Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Domain.AutomobileCountInOrder", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("AutomobileCount")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("AutomobileID")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("OrderID")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("AutomobileCountInOrder", "OrderManagment");
+                });
 
             modelBuilder.Entity("Domain.Order", b =>
                 {
@@ -37,9 +57,6 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("Cancellation")
                         .HasColumnType("boolean");
 
-                    b.Property<Guid?>("ClientId")
-                        .HasColumnType("uuid");
-
                     b.Property<int>("Discount")
                         .HasColumnType("integer");
 
@@ -49,8 +66,8 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("PaymentConfirmation")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("TotalSum")
-                        .HasColumnType("integer");
+                    b.Property<decimal>("TotalSum")
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 

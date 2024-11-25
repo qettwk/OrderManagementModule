@@ -8,7 +8,9 @@ namespace Application.Commands.ViewModels
 {
     public class CheckedAutoIDsDTO
     {
-        public bool Excepted { get; set; }
-        public ICollection<Guid> automobileIDs { get; set; }
+        public bool excepted { get; set; }
+        public List<Guid> automobileIDs { get; set; } = new List<Guid>();
+        public List<int> counts { get; set; } = new List<int>();
+        public decimal totalSum { get; set; }
     }
 }

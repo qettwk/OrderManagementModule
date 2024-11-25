@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.ViewModels
 {
-    public class OrderAddDTO
+    public class OrderAddAutomobilesDTO
     {
-        public List<Guid> AutomobileIDs { get; set; }
-        public Guid? CustomerID { get; set; }
+        public List<AutomobileIDsAndCountsDTO> AutomobileIDsAndCountsDTO { get; set; } = new List<AutomobileIDsAndCountsDTO>();
     }
 }

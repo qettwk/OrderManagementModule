@@ -25,10 +25,12 @@ namespace Domain
         /// </summary>
         public bool PaymentConfirmation { get => paymentConfirmation; set => paymentConfirmation = false; }
         public bool Cancellation { get => cancellation; set => cancellation = false; } // SoftDeleted
-        public int TotalSum { get; set; }
+        public decimal TotalSum { get; set; }
         public int Discount { get; set; }
 
-        public ICollection<Guid>? AutomobilesId { get; set; }
-        public Guid? CustomerID { get; set; }
+        public IList<Guid>? AutomobilesId { get; set; } = new List<Guid>();// AutomobileIDs
+        // ранее было написано ICollection без new List<Guid> и оно работало
+        // возможно, когда указан ICollection, не надо ссылки -- вопрос решается под капотом
+        // но при явном указании надо решать вопрос явно в коде -- инициализировать, прописывать new List<T>();
     }
 }

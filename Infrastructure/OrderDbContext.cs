@@ -18,6 +18,7 @@ namespace Infrastructure
         protected readonly IConfiguration configuration;
 
         public DbSet<Domain.Order> Orders { get; set; }
+        public DbSet<AutomobileCountInOrder> automobileCountInOrders { get; set; }
 
         // разные schemas
         // прописывать ли вручную связи?
@@ -32,6 +33,8 @@ namespace Infrastructure
         {
             modelBuilder.Entity<Domain.Order>()
             .ToTable("Orders", "OrderManagment");
+            modelBuilder.Entity<AutomobileCountInOrder>()
+            .ToTable("AutomobileCountInOrder", "OrderManagment");
         }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {

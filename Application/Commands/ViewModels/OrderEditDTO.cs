@@ -14,7 +14,6 @@ namespace Application.Commands.ViewModels
         public bool IssuedToClient { get; set; }
         public bool PaymentConfirmation { get; set; }
         public bool Cancellation { get; set; } // SoftDeleted
-        public int Discount { get; set; }
 
         public ICollection<Guid>? AutomobilesId { get; set; }
         public Guid? CustomerID { get; set; }

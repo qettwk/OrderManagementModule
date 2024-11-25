@@ -23,33 +23,20 @@ namespace API.Controllers
             _httpClient = httpClient;
         }
 
-        [HttpPost]
-        public async Task<ActionResult<List<Guid>>> CreateOrder([FromQuery] Guid customerID, [FromQuery] List<Guid> automobilesIDs)
-        {
-            var commandSend = new AddOrderCommand
-            {
-               orderAddDTO = new OrderAddDTO
-               { 
-                   CustomerID = customerID,
-                   AutomobileIDs = automobilesIDs
-               }
-            };
-            await _mediator.Send(commandSend);
-            return new List<Guid>();
-        }
-
-        //[HttpPut]
-        //public async Task<IActionResult> AddAutomobilesInOrder([FromQuery] List<Guid> AutomobilesId)
+        //[HttpPost]
+        //public async Task<ActionResult<List<Guid>>> CreateOrder([FromQuery] Guid customerID, [FromQuery] List<Guid> automobilesIDs)
         //{
-
-
+        //    var commandSend = new AddOrderCommand
+        //    {
+        //       orderAddDTO = new OrderAddDTO
+        //       { 
+        //           CustomerID = customerID,
+        //           AutomobileIDs = automobilesIDs
+        //       }
+        //    };
+        //    await _mediator.Send(commandSend);
+        //    return new List<Guid>();
         //}
-
-        //[HttpPut]
-        //public async Task<IActionResult> AddCustomerInOrder([FromQuery] List<Guid> AutomobilesId)
-        //{
-
-
         //}
 
 
